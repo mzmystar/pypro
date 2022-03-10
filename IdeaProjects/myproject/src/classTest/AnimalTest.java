@@ -1,3 +1,5 @@
+package classTest;
+
 public class AnimalTest {
 //    主函数
     public static void main(String[] args){
@@ -12,6 +14,7 @@ public class AnimalTest {
         cat.shout();
 //      子类调用父类的成员方法
         cat.setAge(2);
+        cat.setColor("White");
         int res=cat.getAge();
         System.out.println("喵喵的年龄："+res);
 //      多态
@@ -20,7 +23,7 @@ public class AnimalTest {
         Animals a = new Cat();
         a.setVoice("汪汪汪");
         a.shout(); //调用了子类的shout()方法
-//        a.hobby(); 无法调用子类特有方法
+//        a.hobby(); 父类对象无法调用子类特有方法
 //        多态的转型
         Cat cat1 = (Cat) a;
         cat1.hobby();

@@ -1,3 +1,5 @@
+package classTest;
+
 public class Animals {
 //    成员变量
     protected int age;
@@ -37,7 +39,7 @@ public class Animals {
 //    直接输出对象名
     @Override
     public String toString() {
-        return "Animals{" +
+        return "classTest.Animals{" +
                 "age=" + age +
                 ", color='" + color + '\'' +
                 ", voice='" + voice + '\'' +

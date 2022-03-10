@@ -1,3 +1,5 @@
+package classTest;
+
 public class Cat extends Animals{
 //  重载父类方法
     public void shout(){

@@ -6,7 +6,7 @@ public class Login3Test {
     public static void main(String[] args){
         String admin = "superadmin";
         String passwd = "ad123";
-        for(int i=1;i<=3;i++){
+        for(int i=1;i < 4;i++){
             Scanner sc = new Scanner(System.in);
             System.out.println("输入账号");
             String admin_test = sc.nextLine();
@@ -17,9 +17,6 @@ public class Login3Test {
                 break;
             }else{
                 System.out.println("failed,chance has "+(3-i));
-                if(i==3){
-                    break;
-                }
             }
         }
     }

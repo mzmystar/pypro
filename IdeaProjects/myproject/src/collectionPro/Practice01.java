@@ -22,7 +22,5 @@ public class Practice01 {
         System.out.println("移除集合内的hello元素："+c.remove("hello"));
         System.out.println("移除集合内某元素后："+c);
         c.clear(); //清空集合内元素
-        System.out.println(c.isEmpty());
-
     }
 }
