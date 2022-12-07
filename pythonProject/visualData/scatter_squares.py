@@ -8,3 +8,4 @@ plt.ylabel("Squares of values",fontsize=14)
 plt.title("Squares of values(0,100)",fontsize=20)
 plt.savefig('scatter_squares.png',bbox_inches='tight')
 
+

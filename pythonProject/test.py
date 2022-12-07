@@ -1,4 +1,5 @@
 # -*- coding: UTF-8 -*-
+# 将一个数拆分成N个数，且数字不重复，共有几种方法？
 n, k = map(int, input().split())
 
 

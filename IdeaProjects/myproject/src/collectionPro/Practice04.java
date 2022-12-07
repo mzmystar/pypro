@@ -20,14 +20,16 @@ public class Practice04 {
         list.set(1,"java");
         System.out.println("修改后："+list.get(1));
         list.add(3,"666");
+        System.out.println("添加后: "+ list);
         list.remove(3); //删除后返回该位置的元素
         list.add(4,"666");//添加元素时注意List 长度，避免出现索引溢出问题
 
-//        迭代器遍历List集合
+        //        迭代器遍历List集合
         Iterator<String> it = list.iterator();
         while(it.hasNext()){
             System.out.print(it.next());
         }
+        System.out.println();
 //        for循环遍历 List集合
         for(int i=0;i<list.size();i++){
             String s = list.get(i);

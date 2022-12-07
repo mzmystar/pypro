@@ -1,5 +1,6 @@
 package collectionPro;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Iterator;
@@ -17,15 +18,19 @@ public class Practice08 {
         *   LinkedList:底层数据结构为链表
         * */
         List<String> ll = new LinkedList<>();
+        List<String> al = new ArrayList<>();
         ll.add("java");ll.add("c");ll.add("python");
+        al = ll;al.add("PHP");
 //        增强for
+        System.out.println("链表:");
         for(String s:ll){
-            System.out.println(s);
+            System.out.print(s+" ");
         }
 //        普通for
-        for(int i=0;i<ll.size();i++){
-            String s = ll.get(i);
-            System.out.println(s);
+        System.out.println("数组：");
+        for(int i=0;i<al.size();i++){
+            String s = al.get(i);
+            System.out.print(s+" ");
         }
 //        迭代器
         Iterator<String> it = ll.iterator();
