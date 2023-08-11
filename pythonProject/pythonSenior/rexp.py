@@ -13,12 +13,12 @@ print(re.match('.*[a-zA-Z]',str1))   #首位开始匹配
 # re.search(pattern=,string=,flags=) 扫描整个字符串匹配
 
 print(re.search('o',str1).span())
-print(re.search('o',str1).group())
+print(re.search('o',str1))
 
 # re.sub(pattern=,repl=,string=,count=0,flags=0)
 # repl：替换的字符或函数，count：替换的数量，默认0，表所有
 
-print(re.sub('natural','man-made',str1))
+print(re.sub('natural','artificial',str1))
 
 # re.compile(pattern=,flags=) 编译正则表达式，生成一个pattern对象
 # flags参数：

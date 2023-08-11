@@ -1,0 +1,59 @@
+Flask
+	基于Werkzeug WSGI 和Jinja2模板引擎
+Flask的URL规则基于Werkzeug的路由模块，形成的url唯一
+Flask构造函数使用当期模块的名称作为参数(__name__)
+Flask类的route()函数是一个装饰器，告诉应用程序那个url应该调用相关的函数
+	app.route(rule,options)
+	rule参数表示与该函数的url绑定
+	options为要转发给基础rule对象的参数列表
+Flask变量规则:
+	允许想规则参数添加变量部分，动态构建url
+	app.route(rule<variable-name>)
+	类型：默认为字符串
+		eq:app.route('/hello/<int:id>')
+	并作为关键字参数传递给与规则相关联的函数
+
+Flask的run()方法在本地服务器上运行应用程序
+	run(host,port,debug,options)
+	host 设置为0.0.0.0 可使服务器在外部使用
+	port 端口默认为5000
+	debug 默认为false,为TRUE时作为调试模式
+	options 要转发到底层的werkzeug服务器
+redirect()函数 重定向函数
+Flask的url_for()函数
+	接收函数名称作为第一个参数，以及一个或多个关键字参数，每个参数对应URL的变量部分
+
+Flask 的http方法
+	get:以未加密的形式将数据发送到服务器；默认响应（可通过route()的methods参数更改）
+	head：与get方法相同，但没有响应体
+	post：将html 表单数据发送到服务器；post方法接收的数据不由服务器缓存
+	put：用上传的内容替换目标资源的所有当前表示
+	delete：删除由url给出的目标资源的所有当前表示
+Flask 模板：
+	模板是一个包含响应文本的文件，用变量表示动态部分，告诉引擎具体的值需要从使用的数据中获取
+	使用真实值替换变量，并返回最终得到的字符串的过程称为渲染
+	Flask框架使用Jinja2 模板引擎进行渲染模板的
+
+	视图函数 作用：
+		处理业务逻辑；
+		返回响应内容；
+	模板的好处：
+		视图函数只负责业务逻辑和数据处理
+		模板对取到的视图函数结果进行渲染展示
+		代码结构清晰，耦合度低
+	静态文件：
+		多存于应用程序的/static文件夹下
+		特殊端点 static 用于生成静态文件的url
+Flask request 对象
+	属性：
+		form：字典对象，包含表单参数和键值对
+		args：解析查询字符串的内容，为地址？之后的url的一部分
+		cookies:保存cookie名称和键值对
+		files:与上传文件有关的数据信息
+		method：当前的请求方法
+Flask cookies
+	cookie 以文本的形式存储在客户端上；
+	Flask处理cookie:
+		设置cookie：set_cookie() max_age参数设置有效期，单位为秒
+		获取cookie：request.cookie.get(cookie_name)
+		删除cookie：delete_cookie(cookie_name)
