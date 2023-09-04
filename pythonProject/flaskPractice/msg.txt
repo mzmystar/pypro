@@ -57,3 +57,31 @@ Flask cookies
 		设置cookie：set_cookie() max_age参数设置有效期，单位为秒
 		获取cookie：request.cookie.get(cookie_name)
 		删除cookie：delete_cookie(cookie_name)
+Flask Session
+    session 将数据存储在服务器上,且定义一个sercet_key用于加密数据；
+    会话：客户端登录到服务器并注销服务器的时间间隔；
+    session 对象是一个字典对象，包含会话变量和关联值得键值对；
+    释放会话变量：session.pop(key)
+Flask 重定向和错误：
+    Flask.redirect(location,statuscode,response)
+    location:重定向响应的url
+    statuscode：发送到浏览器的标头，默认为302 (found)
+    response:用于实例化响应
+    Flask.abort(code) 指定错误界面；
+Flask 消息闪现
+    在一个请求结束的时候记录一个信息，并使得在且仅在下一次请求时访问，常与布局模板结合使用以公开信息；
+    可通过next()函数呈现；
+    flash(message,category)
+        message:要闪现的实际消息
+        category:[error,info,warning]
+    删除消息：
+    get_flashed_messages(with_categories,category_filter)
+    第一个参数类型为元组
+    第二个参数仅用于显示特定消息
+    ep:flashTemp
+Flask 文件上传:
+    将html表单中的enctype 属性设置为“multipart/form-data”
+    url处理程序从request.files[]对象中获取文件
+    可在flask对象的配置设置中定义默认上传文件夹的路径和文件的最大大小
+    app.config['UPLOAD_FOLDER']
+    app.config['MAX_CONTENT_LENGTH']  以字节为单位
