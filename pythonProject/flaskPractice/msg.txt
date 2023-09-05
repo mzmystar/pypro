@@ -80,8 +80,72 @@ Flask 消息闪现
     第二个参数仅用于显示特定消息
     ep:flashTemp
 Flask 文件上传:
-    将html表单中的enctype 属性设置为“multipart/form-data”
-    url处理程序从request.files[]对象中获取文件
+    需将html表单中的enctype 属性设置为“multipart/form-data”；
+    url处理程序通过request.files[]对象中获取文件信息；
     可在flask对象的配置设置中定义默认上传文件夹的路径和文件的最大大小
     app.config['UPLOAD_FOLDER']
     app.config['MAX_CONTENT_LENGTH']  以字节为单位
+Flask 扩展：
+    Flask 通常被称为微框架；
+    核心功能：基于Werkzeug的WSGI和路由；
+            基于Jinja2的模板引擎；
+    Flask扩展为Flask框架提供了可扩展性
+    扩展从app.config获取其自身的配置，并在初始化时传递给应用实例；
+    Flask常用扩展包：
+        Flask-SQLalchemy:操作数据库
+        Flask-script:插入脚本
+        Flask-migrate:迁移数据库
+        Flask-Session:Session存储方式指定
+        Flask-WTF:表单
+        Flask-Mail:邮件
+        Flask-Bable:提供国际化和本地化支持、翻译
+        Flask-Login：认证用户状态
+        Flask-OpenID:认证
+        Flask-RESTful:开发REST API的工具
+        Flask-Bootstrap:集成前端Twitter Bootstrap 框架
+        Flask-Moment:本地化日期和时间
+        Flask-Admin:简单可扩展的管理接口的框架
+Flask-Mail:邮件
+    安装：pip install Flask-Mail
+    参数：
+        MAIL_SERVER：电子邮件服务器的名称/IP地址
+        MAIL_PORT：使用的服务端口号
+        MAIL_USE_TLS:启用/禁用传输安全层加密
+        MAIL_USE_SSL:启用/禁用安全套接字层加密
+        MAIL_DEBUG:调试支持
+        MAIL_USERNAME：发件人的用户名
+        MAIL_PASSWORD:发件人的密码
+        MAIL_DEFAULT_SENDER:设置默认发件人
+        MAIL_MAX_EMAILS:设置要发送的最大邮件数量
+        MAIL_SUPPRESS_SEND:如果app.testing设置为True，则发送被抑制
+        MAIL_ASCII_ATTACHMENTS:
+    Mail类：
+        类构造函数：
+            flask-mail.Mail(app=None) #将Flask应用对象最为参数
+        方法：send()：发送Message类对象的内容
+             connect()：打开与邮件主机的连接
+             send_message()：发送消息对象
+    Message类：
+        类构造函数：
+            flask-mail.Message()
+            :param subject: email subject header
+            :param recipients: list of email addresses
+            :param body: plain text message
+            :param html: HTML message
+            :param sender: email sender address, or **MAIL_DEFAULT_SENDER** by default
+            :param cc: CC list
+            :param bcc: BCC list
+            :param attachments: list of Attachment instances
+            :param reply_to: reply-to address
+            :param date: send date
+            :param charset: message character set
+            :param extra_headers: A dictionary of additional headers for the message
+            :param mail_options: A list of ESMTP options to be used in MAIL FROM command
+            :param rcpt_options:  A list of ESMTP options to be used in RCPT commands
+        方法：
+            attach() 添加附件
+                参数：filename：
+                     content_type:文件类型
+                     data:原始文件数据
+                     格式化：内容格式化操作
+            add_recipient() 添加收件人
