@@ -149,3 +149,24 @@ Flask-Mail:邮件
                      data:原始文件数据
                      格式化：内容格式化操作
             add_recipient() 添加收件人
+    Flask WTF
+        安装：pip install flask-WTF
+        用途：可在python脚本中定义表单字段，并使用HTML模板进行渲染；
+            亦可将验证应用于WTF字段
+        WTForms 表单字段定义：
+            TextField
+            BooleanField
+            DecimalField
+            IntegerField
+            RadioField
+            SelectField
+            TextAreaField
+            PasswordField
+            SubmitField
+        Validators 验证器类：
+            DataRequired 检查输入字段是否为空
+            Email   检查字段中的文本是否遵循电子邮件ID约定
+            IPAddress 在输入字段验证IP地址
+            Length 验证输入字段中的字符串长度是否在指定范围内
+            NumberRange 验证数字是否在指定范围内
+            URL 验证输入的URL

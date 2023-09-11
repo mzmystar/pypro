@@ -12,11 +12,15 @@ app.config["MAIL_USE_TSL"] = False
 app.config["MAIL_USE_SSL"] = True
 mail = Mail(app)
 
-app.route('/')
+
+@app.route('/')
 def index():
-    msg = Message("hello",sender="honglichen75@gmail.com",recipients="123@gmail.com")
-    msg.body="this is a test example"
+    msg = Message("hello", sender="honglichen75@gmail.com", recipients="123@gmail.com")
+    msg.add_recipient("345@gmail.com")
+    msg.body = "this is a test example"
     mail.send(msg)
     return "sent"
+
+
 if __name__ == "__main__":
     app.run(debug=True)
