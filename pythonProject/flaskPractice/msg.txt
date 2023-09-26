@@ -170,3 +170,30 @@ Flask-Mail:邮件
             Length 验证输入字段中的字符串长度是否在指定范围内
             NumberRange 验证数字是否在指定范围内
             URL 验证输入的URL
+Flask-SQLalchemy:操作数据库
+    ORM：对象关系映射 object relation mapping
+    SQLalchemy:提供了SQL的全部功能和灵活性
+    安装：pip install flask-sqlalchemy
+    导入SQLAlchemy类：from flask_sqlalchemy import SQLAlchemy
+    为要使用的数据库设置uri: 以sqlite举例
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.sqlite3'
+    创建URI中的数据库： db.create_all()
+    SQLAlchemy的Session对象管理ORM对象的所有持久性操作
+        db.session.add(模型对象)  --将记录插入到映射表中
+        db.session.delete(模型对象)  --将记录从映射表中删除
+        model.query.all()   --从表中检索所有记录 model为表名
+        可通过filter属性将过滤器应用于数据集：model.query.filter(column=condition).all()
+Flask Sijax:
+    Sijax:simple Ajax 是一个Python/jQuery库，目的是轻松的将Ajax 引入到应用程序中；
+        其使用jQuery.ajax来发出AJAX请求
+    安装：pip install flask-sijax
+    组态：
+        SIJAX_STATIC_PATH:要被镜像的Sijax JavaScript文件的静态路径；默认位置为:static/js/sijax;
+            在该文件夹下存有：sijax.js和json2.js文件。
+        SIJAX_JSON_URI:从中加载json2.js静态文件的uri;
+
+        因sijax使用json在浏览器和服务器之间传递数据，无法通过使用post方法访问数据，且sijax使用post请求；
+        为使view函数能够处理sijax请求，需使用
+            @app.route('/url',methods=[\'GET\',\'POST\'])
+        或  @flask_sijax.route() 辅助装饰器
+        每个sijax处理函数都会自动接收至少一个参数，类似Python的'self'

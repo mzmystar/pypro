@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from flask import Flask,render_template,request
+from flask import Flask, render_template, request
 import sqlite3 as sql
 
 app = Flask(__name__)
@@ -25,6 +25,7 @@ def addrec():
 
             with sql.connect("database.db") as con:
                 cur = con.cursor()
+                # cur.execute("create table students(name MESSAGE_TEXT ,addr Message_Text ,city MESSAGE_TEXT ,pin MESSAGE_TEXT )")
                 cur.execute("insert into students(name,addr,city,pin)values (?,?,?,?)",(name,addr,city,pin))
                 con.commit()
                 msg = "add successfully"
