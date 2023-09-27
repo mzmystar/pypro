@@ -197,3 +197,53 @@ Flask Sijax:
             @app.route('/url',methods=[\'GET\',\'POST\'])
         或  @flask_sijax.route() 辅助装饰器
         每个sijax处理函数都会自动接收至少一个参数，类似Python的'self'
+
+Flask 部署：
+        debug模式：常用于测试环境；于生产环境需禁用；
+        如果禁用了debug，可以通过将主机名设置为host='0.0.0.0',使得本地计算机上的开发服务器可供网络上的用户使用；
+        且此时当前的操作系统将侦听是所有公共IP；
+    部署：从开发环境切换到成熟的生产环境，需要在真实的web服务器上部署应用程序；
+        托管平台：为小型应用程序提供免费计划
+            Heroku
+            dotcloud
+            webfaction
+        专用服务器：
+        mod_wsgi：Apache模块，提供了一个WSGI兼容接口，用于在Apache服务器上托管基于Python的web应用程序
+        安装：pip install mod_wsgi
+        验证是否安装成功：
+            mod_wsgi-express start-server
+            而后通过浏览器指向本地 http://localhost:8000 验证
+        创建.wsgi文件：
+            存在一个：yourapplication.wsgi文件，包含代码mod_wsgi,该代码在启动时执行以获取应用程序对象;
+                eq: from yourapplication import app as application
+            确保yourapplication和所有要使用的库都在Python加载路径上
+        配置Apache: 告知mod_wsgi 应用程序的位置
+        独立的WSGI容器：其包含WSGI应用程序并提供HTTP服务；
+            Gunicorn
+            Tornado
+            Gevent
+            Twisted Web
+        静态文件处理:
+            准备静态资源：
+                在项目的根目录下（blog)创建static目录，存放静态资源
+            配置nginx转发：
+                eq: location /static{
+                    # root html/blog;
+                    alias html/blog/static;
+                }
+Flask FastCGI
+        是在nginx、lighttpd和Cherokee等web服务器上的Flask应用程序的另一个部署选项；
+    配置FastCGI：
+        创建FastCGI 服务器文件 yourapplication.fcgiC
+    配置Apache:
+        对于基本的Apache部署，.fcgi文件将会出现在应用程序的url中;
+            eq: example.com/yourapplication.fcgi/hello/
+        为使其不出现在url中可采用以下方法:
+            <VirtualHost *>
+                ServerName example.com
+                ScriptAlias / /path/to/yourapplication.fcgi/
+            </VirtualHost>
+    配置Lighttpd：
+        详见：flaskPractice/FastCGITemp/yourapplication.fcgiC.py
+        此配置将应用程序绑定到/yourapplication;
+Flask 即插视图基本原则:
