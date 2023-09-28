@@ -247,3 +247,9 @@ Flask FastCGI
         详见：flaskPractice/FastCGITemp/yourapplication.fcgiC.py
         此配置将应用程序绑定到/yourapplication;
 Flask 即插视图基本原则:
+    基于类的即插视图：提供一个通用的函数来载入并渲染从数据库载入的数据
+
+    基于调度的即插视图方法：目的：对每个HTTP方法执行不同的函数；于RESTful API非常有用；
+        可以通过flask.view.MethodView 实现，每个http方法映射到同名函数（只有名称为小写的）
+
+    Flask 装饰视图：主要是装饰as_view()的返回值；
